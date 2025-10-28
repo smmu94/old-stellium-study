@@ -1,7 +1,7 @@
+import { ROUTES } from "@/utils/routes/routes";
 import { renderHook } from "@testing-library/react";
 import { usePathname } from "next/navigation";
-import { useFooterVisibility } from "./useFooterVisibility";
-import { ROUTES } from "@/utils/routes/routes";
+import { useFooterVisibility } from ".";
 
 jest.mock("next/navigation", () => ({
     usePathname: jest.fn(),
