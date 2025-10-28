@@ -1,7 +1,7 @@
-import { BRAND_ASSETS } from '@/config/constants';
-import Image from 'next/image';
-import Link from 'next/link';
-import { SOCIAL_LINKS } from './constants';
+import { BRAND_ASSETS } from "@/config/constants";
+import Image from "next/image";
+import Link from "next/link";
+import { SOCIAL_LINKS } from "./constants";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -12,12 +12,12 @@ export default function Footer() {
         <Image
           src={BRAND_ASSETS.logo.dark}
           alt="Stellium Study"
-          width={150}
-          height={150}
+          width={170}
+          height={170}
         />
       </div>
 
-      <p className="text-preset-5 text-white">
+      <p className="text-preset-4 text-white">
         &copy; {currentYear} Stellium Study. All rights reserved.
       </p>
 
@@ -30,7 +30,7 @@ export default function Footer() {
             title={title}
             aria-label={title}
           >
-            <Icon className="w-5 h-5" />
+            <Icon className="w-6 h-6" />
           </Link>
         ))}
       </div>

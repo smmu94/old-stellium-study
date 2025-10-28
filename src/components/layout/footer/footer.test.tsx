@@ -19,8 +19,8 @@ describe("Footer Component", () => {
     const logo = screen.getByAltText("Stellium Study");
     expect(logo).toBeInTheDocument();
     expect(logo).toHaveAttribute("src", BRAND_ASSETS.logo.dark);
-    expect(logo).toHaveAttribute("width", "150");
-    expect(logo).toHaveAttribute("height", "150");
+    expect(logo).toHaveAttribute("width", "170");
+    expect(logo).toHaveAttribute("height", "170");
   });
 
   it("should render copyright text with current year", () => {

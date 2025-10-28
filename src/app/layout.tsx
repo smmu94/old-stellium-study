@@ -31,7 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${spaceGrotesk.className} ${orbitron.variable} ${spaceGrotesk.variable} h-screen flex flex-col overflow-hidden`}>
+      <body className={`${spaceGrotesk.className} ${orbitron.variable} ${spaceGrotesk.variable} h-screen flex flex-col`}>
         <Navbar />
         <div className="flex-1">
           <ConditionalLayout>
