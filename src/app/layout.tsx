@@ -1,5 +1,6 @@
 import ConditionalLayout from "@/components/layout/ConditionalLayout";
 import Navbar from "@/components/layout/navbar";
+import { APP_CONFIG, BRAND_ASSETS } from "@/config/constants";
 import type { Metadata } from "next";
 import { Orbitron, Space_Grotesk } from "next/font/google";
 import "./globals.css";
@@ -15,10 +16,11 @@ const orbitron = Orbitron({
 });
 
 export const metadata: Metadata = {
-  title: "Stellium Study",
-  description: "Organiza tu vida académica",
+  title: APP_CONFIG.name,
+  description: APP_CONFIG.description,
+  authors: [{ name: APP_CONFIG.author }],
   icons: {
-    icon: '/favicon.svg',
+    icon: BRAND_ASSETS.favicon,
   },
 };
 

@@ -1,43 +1,38 @@
+import { BRAND_ASSETS } from '@/config/constants';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { SOCIAL_LINKS } from './constants';
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="flex justify-between items-center px-10 py-6 bg-oxford text-white">
       <div className="flex items-center">
         <Image
-          src="/logo/stellium-logo-white.svg"
+          src={BRAND_ASSETS.logo.dark}
           alt="Stellium Study"
           width={150}
           height={150}
         />
       </div>
-      <p className="text-sm text-white">
-        &copy; {new Date().getFullYear()} Stellium Study. All rights reserved.
+
+      <p className="text-preset-5 text-white">
+        &copy; {currentYear} Stellium Study. All rights reserved.
       </p>
+
       <div className="flex gap-4 items-center">
-        <Link
-          href="#"
-          className="text-white hover:text-vermilion transition-colors"
-          title="Facebook"
-        >
-          <FaFacebook className="w-5 h-5" />
-        </Link>
-        <Link
-          href="#"
-          className="text-white hover:text-vermilion transition-colors"
-          title="Instagram"
-        >
-          <FaInstagram className="w-5 h-5" />
-        </Link>
-        <Link
-          href="#"
-          className="text-white hover:text-vermilion transition-colors"
-          title="LinkedIn"
-        >
-          <FaLinkedin className="w-5 h-5" />
-        </Link>
+        {SOCIAL_LINKS.map(({ href, title, icon: Icon }) => (
+          <Link
+            key={title}
+            href={href}
+            className={"text-white hover:text-vermilion transition-colors"}
+            title={title}
+            aria-label={title}
+          >
+            <Icon className="w-5 h-5" />
+          </Link>
+        ))}
       </div>
     </footer>
   );
