@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useFooterVisibility } from '@/hooks/useFooterVisibility';
-import Footer from './footer';
+import { useFooterVisibility } from "@/hooks/useFooterVisibility";
+import Footer from "./footer";
 
 interface ConditionalLayoutProps {
     children: React.ReactNode;
@@ -10,7 +10,6 @@ interface ConditionalLayoutProps {
 export default function ConditionalLayout({ children }: ConditionalLayoutProps) {
     const showFooter = useFooterVisibility();
 
-    // Early return pattern for cleaner code
     if (!showFooter) {
         return (
             <main className="h-full overflow-y-auto">

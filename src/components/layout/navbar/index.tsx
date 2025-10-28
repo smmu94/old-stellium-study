@@ -1,7 +1,7 @@
 import { BRAND_ASSETS } from "@/config/constants";
 import { NAVIGATION_ITEMS, ROUTES } from "@/utils/routes/routes";
 import Image from "next/image";
-import Link from 'next/link';
+import Link from "next/link";
 
 export default function Navbar() {
   return (

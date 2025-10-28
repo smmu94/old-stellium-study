@@ -6,6 +6,10 @@
       "dom.iterable",
       "esnext"
     ],
+    "types": [
+      "jest",
+      "node"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -31,6 +35,7 @@
   "include": [
     "next-env.d.ts",
     "src/types.d.ts",
+    "src/types/jest.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
