@@ -1,0 +1,27 @@
+<!-- StelliumStudy Favicon Caricatura -->
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <!-- Aro azul navy alrededor del cohete -->
+  <circle cx="16" cy="16" r="14" fill="none" stroke="#0A0F29" stroke-width="2" opacity="0.8"/>
+  
+  <!-- Cohete caricatura para favicon -->
+  <g transform="translate(10, 4) rotate(15 6 10)">
+    <!-- Cuerpo redondeado -->
+    <ellipse cx="6" cy="12" rx="3" ry="8" fill="#F04438"/>
+    
+    <!-- Punta redondeada -->
+    <ellipse cx="6" cy="6" rx="2.5" ry="4" fill="#F04438"/>
+    
+    <!-- Ventana -->
+    <circle cx="6" cy="10" r="1.5" fill="#FFFFFF"/>
+    <circle cx="6" cy="10" r="1" fill="#0A0F29" opacity="0.3"/>
+    
+    <!-- Aletas -->
+    <ellipse cx="2" cy="18" rx="1.5" ry="2.5" fill="#F04438"/>
+    <ellipse cx="10" cy="18" rx="1.5" ry="2.5" fill="#F04438"/>
+    
+    <!-- Llama -->
+    <ellipse cx="5" cy="22" rx="1" ry="3" fill="#FF6B35"/>
+    <ellipse cx="6" cy="23" rx="1.2" ry="3.5" fill="#FF4500"/>
+    <ellipse cx="7" cy="22" rx="1" ry="3" fill="#FF6B35"/>
+  </g>
+</svg>
