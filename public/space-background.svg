@@ -3,7 +3,7 @@
   <rect width="1920" height="1080" fill="#ffffff" />
   
   <!-- Hand-drawn space sketches -->
-  <g stroke="#0a0f29" stroke-width="2" fill="none" opacity="0.3">
+  <g stroke="#0a0f29" stroke-width="2" fill="none" opacity="0.6">
     
     <!-- Planet with rings (Saturn style) -->
     <g transform="translate(300, 200)">

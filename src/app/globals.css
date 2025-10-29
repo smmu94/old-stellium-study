@@ -51,6 +51,13 @@ main {
   line-height: 1.5;
 }
 
+.text-preset-3-bolder { 
+  font-family: var(--font-space-grotesk);
+  font-weight: 700;
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
 .text-preset-4 { 
   font-family: var(--font-space-grotesk);
   font-weight: 500;

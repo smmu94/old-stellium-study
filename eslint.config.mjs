@@ -5,6 +5,7 @@ const eslintConfig = defineConfig([
   ...nextVitals,
   {
     rules: {
+      indent: ["error", 2],
       quotes: [
         "error",
         "double",

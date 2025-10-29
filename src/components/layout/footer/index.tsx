@@ -7,7 +7,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="flex justify-between items-center px-10 py-6 bg-oxford text-white">
+    <footer className="flex justify-between items-center px-10 py-4 bg-oxford text-white">
       <div className="flex items-center">
         <Image
           src={BRAND_ASSETS.logo.dark}
