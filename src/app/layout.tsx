@@ -1,8 +1,9 @@
 import ConditionalLayout from "@/components/layout/ConditionalLayout";
-import Navbar from "@/components/layout/navbar";
 import { APP_CONFIG, BRAND_ASSETS } from "@/config/constants";
 import type { Metadata } from "next";
 import { Orbitron, Space_Grotesk } from "next/font/google";
+import { Toaster } from "react-hot-toast";
+import ReduxProvider from "@/store/ReduxProvider";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -24,19 +25,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
       <body className={`${spaceGrotesk.className} ${orbitron.variable} ${spaceGrotesk.variable} h-screen flex flex-col`}>
-        <Navbar />
         <div className="flex-1">
-          <ConditionalLayout>
-            {children}
-          </ConditionalLayout>
+          <ReduxProvider>
+            <ConditionalLayout>
+              <Toaster position="bottom-right" />
+              {children}
+            </ConditionalLayout>
+          </ReduxProvider>
         </div>
       </body>
     </html>

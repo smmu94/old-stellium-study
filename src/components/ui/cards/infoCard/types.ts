@@ -1,7 +1,8 @@
 import { ReactNode } from "react";
 
-export type FeaturesCardProps = {
+export type InfoCardProps = {
     title: string;
     description: string;
     icon: ReactNode;
+    cardClassName?: string;
 };

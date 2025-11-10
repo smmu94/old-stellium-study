@@ -12,8 +12,9 @@ export default function Footer() {
         <Image
           src={BRAND_ASSETS.logo.dark}
           alt="Stellium Study"
+          className="h-10 w-auto"
           width={170}
-          height={170}
+          height={40}
         />
       </div>
 

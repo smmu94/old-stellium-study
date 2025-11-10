@@ -5,14 +5,14 @@ import SignUpButton from "./index";
 
 const mockNavigate = jest.fn();
 jest.mock("@/hooks/useNavigate", () => ({
-    useNavigate: () => mockNavigate,
+  useNavigate: () => mockNavigate,
 }));
 
 describe("SignUpButton", () => {
-    it("should call navigate with /auth when clicked", () => {
-        render(<SignUpButton />);
-        const button = screen.getByRole("button", { name: /sign up/i });
-        fireEvent.click(button);
-        expect(mockNavigate).toHaveBeenCalledWith(ROUTES.AUTH);
-    });
+  it("should call navigate with /auth when clicked", () => {
+    render(<SignUpButton />);
+    const button = screen.getByRole("button", { name: /sign up/i });
+    fireEvent.click(button);
+    expect(mockNavigate).toHaveBeenCalledWith(ROUTES.AUTH);
+  });
 });

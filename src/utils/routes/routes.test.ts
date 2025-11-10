@@ -1,20 +1,20 @@
-import { isPublicRouteWithFooter, ROUTES } from "./routes";
+import { isPublicRoute, ROUTES } from "./routes";
 
 describe("Route Utilities", () => {
-    describe("isPublicRouteWithFooter", () => {
-        it("should return true for all defined public routes", () => {
-            expect(isPublicRouteWithFooter(ROUTES.HOME)).toBe(true);
-            expect(isPublicRouteWithFooter(ROUTES.FEATURES)).toBe(true);
-            expect(isPublicRouteWithFooter(ROUTES.ABOUT)).toBe(true);
-            expect(isPublicRouteWithFooter(ROUTES.CONTACT)).toBe(true);
-            expect(isPublicRouteWithFooter(ROUTES.AUTH)).toBe(true);
-        });
-
-        it("should return false for undefined routes", () => {
-            expect(isPublicRouteWithFooter("/admin")).toBe(false);
-            expect(isPublicRouteWithFooter("/dashboard")).toBe(false);
-            expect(isPublicRouteWithFooter("/profile")).toBe(false);
-            expect(isPublicRouteWithFooter("/settings")).toBe(false);
-        });
+  describe("isPublicRoute", () => {
+    it("should return true for all defined public routes", () => {
+      expect(isPublicRoute(ROUTES.HOME)).toBe(true);
+      expect(isPublicRoute(ROUTES.FEATURES)).toBe(true);
+      expect(isPublicRoute(ROUTES.ABOUT)).toBe(true);
+      expect(isPublicRoute(ROUTES.CONTACT)).toBe(true);
+      expect(isPublicRoute(ROUTES.AUTH)).toBe(true);
     });
+
+    it("should return false for undefined routes", () => {
+      expect(isPublicRoute("/admin")).toBe(false);
+      expect(isPublicRoute("/dashboard")).toBe(false);
+      expect(isPublicRoute("/profile")).toBe(false);
+      expect(isPublicRoute("/settings")).toBe(false);
+    });
+  });
 });

@@ -1,5 +1,5 @@
 
-import FeaturesCard from "@/components/ui/cards/featuresCard";
+import FeaturesCard from "@/components/ui/cards/infoCard";
 import SignUpButton from "@/components/ui/signUpButton";
 import * as FaIcons from "react-icons/fa";
 import { FEATURES } from "./contants";
