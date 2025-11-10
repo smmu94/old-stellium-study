@@ -4,7 +4,7 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col justify-start items-center gap-16">
-      <div className="flex flex-col gap-6 w-[70%] text-center items-center">
+      <div className="flex flex-col gap-6 max-w-2xl text-center items-center">
         <h1 className="text-preset-1 text-oxford">
           Organize your academic life in a fun and effective way
         </h1>
@@ -14,7 +14,7 @@ export default function HomePage() {
         </p>
         <SignUpButton />
       </div>
-      <div className="relative aspect-video w-full max-w-4xl">
+      <div className="relative aspect-video w-full max-w-2xl">
         <video
           className="absolute inset-0 w-full h-full rounded-lg shadow-xl bg-rose"
           controls

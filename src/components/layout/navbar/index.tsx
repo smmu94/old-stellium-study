@@ -10,8 +10,9 @@ export default function Navbar() {
         <Image
           src={BRAND_ASSETS.logo.light}
           alt="Stellium Study"
+          className="h-12 w-auto"
           width={200}
-          height={200}
+          height={50}
         />
       </Link>
 

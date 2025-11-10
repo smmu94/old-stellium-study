@@ -20,7 +20,7 @@ describe("Footer Component", () => {
     expect(logo).toBeInTheDocument();
     expect(logo).toHaveAttribute("src", BRAND_ASSETS.logo.dark);
     expect(logo).toHaveAttribute("width", "170");
-    expect(logo).toHaveAttribute("height", "170");
+    expect(logo).toHaveAttribute("height", "40");
   });
 
   it("should render copyright text with current year", () => {
