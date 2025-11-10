@@ -19,7 +19,7 @@ export default function FeaturesPage() {
         <h3 className="text-preset-2 text-oxford text-center">
             Explore our key tools
         </h3>
-        <div className="grid grid-cols-3 gap-6">
+        <div className="flex flex-wrap gap-6 justify-center">
           {FEATURES.map((feature: typeof FEATURES[number]) => {
             const IconComponent = FaIcons[feature.icon as keyof typeof FaIcons];
             return (

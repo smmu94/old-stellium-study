@@ -19,7 +19,7 @@ export default function AboutPage() {
         <h3 className="text-preset-2 text-oxford text-center">
           How StelliumStudy Helps You
         </h3>
-        <div className="grid grid-cols-4 gap-6">
+        <div className="flex flex-wrap gap-6 justify-center">
           {VALUES.map((value: typeof VALUES[number]) => {
             const IconComponent = FaIcons[value.icon as keyof typeof FaIcons];
             return (
@@ -32,7 +32,6 @@ export default function AboutPage() {
                 }
                 title={value.title}
                 description={value.description}
-                cardClassName="max-w-xs w-full"
               />
             );
           })}

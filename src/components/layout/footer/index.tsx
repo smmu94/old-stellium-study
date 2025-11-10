@@ -7,7 +7,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="flex justify-between items-center px-10 py-4 bg-oxford text-white">
+    <footer className="flex flex-col md:flex-row justify-between gap-4 items-center px-10 py-4 bg-oxford text-white">
       <div className="flex items-center">
         <Image
           src={BRAND_ASSETS.logo.dark}
@@ -17,11 +17,9 @@ export default function Footer() {
           height={40}
         />
       </div>
-
       <p className="text-preset-4 text-white">
         &copy; {currentYear} Stellium Study. All rights reserved.
       </p>
-
       <div className="flex gap-4 items-center">
         {SOCIAL_LINKS.map(({ href, title, icon: Icon }) => (
           <Link
