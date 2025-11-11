@@ -7,6 +7,9 @@ export const ROUTES = {
   CONTACT: "/contact",
   AUTH: "/auth",
   DASHBOARD: "/dashboard",
+  CALENDAR: "/dashboard/calendar",
+  STATISTICS: "/dashboard/statistics",
+  SETTINGS: "/dashboard/settings"
 } as const;
 
 export const NAVIGATION_ITEMS: NavigationItem[] = [

@@ -1,20 +1,40 @@
-import { isPublicRoute, ROUTES } from "./routes";
+import { isPublicRoute, ROUTES, NAVIGATION_ITEMS, PUBLIC_ROUTES } from "./routes";
 
 describe("Route Utilities", () => {
   describe("isPublicRoute", () => {
     it("should return true for all defined public routes", () => {
-      expect(isPublicRoute(ROUTES.HOME)).toBe(true);
-      expect(isPublicRoute(ROUTES.FEATURES)).toBe(true);
-      expect(isPublicRoute(ROUTES.ABOUT)).toBe(true);
-      expect(isPublicRoute(ROUTES.CONTACT)).toBe(true);
-      expect(isPublicRoute(ROUTES.AUTH)).toBe(true);
+      PUBLIC_ROUTES.forEach((route) => {
+        expect(isPublicRoute(route)).toBe(true);
+      });
     });
+    it("should return false for dashboard/private routes", () => {
+      const privateRoutes = [
+        ROUTES.DASHBOARD,
+        ROUTES.CALENDAR,
+        ROUTES.STATISTICS,
+        ROUTES.SETTINGS,
+      ];
+      privateRoutes.forEach((route) => {
+        expect(isPublicRoute(route)).toBe(false);
+      });
+    });
+    it("should return false for completely unknown routes", () => {
+      const unknownRoutes = ["/admin", "/profile", "/not-found"];
+      unknownRoutes.forEach((route) => {
+        expect(isPublicRoute(route)).toBe(false);
+      });
+    });
+  });
 
-    it("should return false for undefined routes", () => {
-      expect(isPublicRoute("/admin")).toBe(false);
-      expect(isPublicRoute("/dashboard")).toBe(false);
-      expect(isPublicRoute("/profile")).toBe(false);
-      expect(isPublicRoute("/settings")).toBe(false);
+  describe("NAVIGATION_ITEMS", () => {
+    it("should have correct labels and hrefs", () => {
+      const expectedItems = [
+        { href: ROUTES.FEATURES, label: "Features" },
+        { href: ROUTES.ABOUT, label: "About" },
+        { href: ROUTES.CONTACT, label: "Contact" },
+        { href: ROUTES.AUTH, label: "Sign In" },
+      ];
+      expect(NAVIGATION_ITEMS).toEqual(expectedItems);
     });
   });
 });

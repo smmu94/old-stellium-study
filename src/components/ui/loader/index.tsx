@@ -1,9 +1,10 @@
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
-
 export default function Loader() {
   return (
-    <div className="flex h-screen items-center justify-center">
-      <AiOutlineLoading3Quarters className="animate-spin h-15 w-15 text-jasmine" />
+    <div className="flex items-center justify-center h-screen bg-oxford">
+      <div className="text-center">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-jasmine mx-auto mb-4"></div>
+        <p className="text-white text-preset-3">Loading...</p>
+      </div>
     </div>
   );
 }
