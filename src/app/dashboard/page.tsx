@@ -1,5 +1,6 @@
 "use client";
 
+import SubjectCard from "@/components/ui/cards/subjectCard";
 import { RootState } from "@/store/store";
 import { useSelector } from "react-redux";
 

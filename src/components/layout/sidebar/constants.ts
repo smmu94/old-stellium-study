@@ -13,12 +13,12 @@ export const DASHBOARD_ITEMS = [
   },
   {
     title: "Statistics",
-    icon: "FaBars",
+    icon: "FaChartBar",
     href: ROUTES.STATISTICS,
   },
   {
     title: "Settings",
-    icon: "FaTools",
+    icon: "FaCog",
     href: ROUTES.SETTINGS,
   }
 ] as const;
