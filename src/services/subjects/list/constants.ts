@@ -1,1 +1,0 @@
-export const SUBJECTS_LIST_KEY = "subjects";
