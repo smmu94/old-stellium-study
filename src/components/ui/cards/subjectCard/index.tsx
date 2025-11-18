@@ -23,7 +23,7 @@ export default function SubjectCard({
         ? "Due today!"
         : `Due in ${nextDelivery!.daysLeft} ${
             nextDelivery!.daysLeft === 1 ? "day" : "days"
-          }`
+        }`
       : "—";
 
   return (

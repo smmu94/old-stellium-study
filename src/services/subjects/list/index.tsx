@@ -1,9 +1,7 @@
 import { useQuery, UseQueryOptions, UseQueryResult } from "@tanstack/react-query";
-import { SubjectListResponse, SubjectQueryParams } from "./types";
-import { buildQueryParams } from "@/services/utils";
-import { SUBJECTS_LIST_KEY } from "./constants";
-import { API_KEY, BASE_URL } from "../../constants";
 import { listMock } from "./dataMock";
+import { SubjectListResponse, SubjectQueryParams } from "./types";
+import { SUBJECTS_KEY } from "../../constants";
 export function useGetSubjectList(
   queryParams: SubjectQueryParams = {},
   options?: Omit<
@@ -12,12 +10,12 @@ export function useGetSubjectList(
   >
 ): UseQueryResult<SubjectListResponse, Error> {
   return useQuery<SubjectListResponse, Error>({
-    queryKey: [SUBJECTS_LIST_KEY, queryParams],
+    queryKey: [SUBJECTS_KEY, queryParams],
     queryFn: async () => {
       await new Promise((resolve) => setTimeout(resolve, 300));
       return listMock;
       // const params = buildQueryParams(queryParams);
-      // const url = `${BASE_URL}/${SUBJECTS_LIST_KEY}${params ? `?${params}` : ""}`;
+      // const url = `${BASE_URL}/${SUBJECTS_KEY}${params ? `?${params}` : ""}`;
 
       // const response = await fetch(url, {
       //   method: "GET",
