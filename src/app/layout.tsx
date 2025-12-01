@@ -4,6 +4,9 @@ import type { Metadata } from "next";
 import { Orbitron, Space_Grotesk } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import ReduxProvider from "@/store/ReduxProvider";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { queryClient } from "@/lib/react-query";
+import "react-datepicker/dist/react-datepicker.css";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -28,15 +31,17 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
-      <body className={`${spaceGrotesk.className} ${orbitron.variable} ${spaceGrotesk.variable} h-screen flex flex-col`}>
-        <div className="flex-1">
+      <body
+        className={`${spaceGrotesk.className} ${orbitron.variable} ${spaceGrotesk.variable} h-full flex flex-col`}
+      >
+        <QueryClientProvider client={queryClient}>
           <ReduxProvider>
             <ConditionalLayout>
               <Toaster position="bottom-right" />
               {children}
             </ConditionalLayout>
           </ReduxProvider>
-        </div>
+        </QueryClientProvider>
       </body>
     </html>
   );

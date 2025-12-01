@@ -4,11 +4,8 @@ import { SubjectListResponse, SubjectQueryParams } from "./types";
 import { SUBJECTS_KEY } from "../../constants";
 export function useGetSubjectList(
   queryParams: SubjectQueryParams = {},
-  options?: Omit<
-    UseQueryOptions<SubjectListResponse, Error>,
-    "queryKey" | "queryFn"
-  >
-): UseQueryResult<SubjectListResponse, Error> {
+  options?: Omit<UseQueryOptions<SubjectListResponse, Error>, "queryKey" | "queryFn">
+) : UseQueryResult<SubjectListResponse, Error> {
   return useQuery<SubjectListResponse, Error>({
     queryKey: [SUBJECTS_KEY, queryParams],
     queryFn: async () => {
@@ -26,8 +23,8 @@ export function useGetSubjectList(
       // });
       // return response.json();
     },
-    ...options,
     refetchOnWindowFocus: false,
     staleTime: 1000 * 60 * 5,
+    ...options,
   });
 }

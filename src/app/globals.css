@@ -1,14 +1,16 @@
 @import "tailwindcss";
+@plugin "tailwind-scrollbar";
 
 @theme {
   /* Stellium Study - Minimal Palette */
   --color-white: #ffffff;
   --color-oxford: #0a0f29;
   --color-vermilion: #f04438;
-  --color-rose: #faece7;
+  --color-purple: #a47dab;
   --color-jasmine: #fadd8c;
   --color-platinum: #e8e8e8;
   --color-mint: #6a907f;
+  --color-rose: #e6b5b5;
   
   /* Typography System */
   --font-orbitron: var(--font-orbitron), 'Orbitron', monospace;
@@ -29,8 +31,6 @@ main {
   background-size: cover;
 }
 
-
-/* Text Presets - Custom Typography Classes */
 .text-preset-1 { 
   font-family: var(--font-orbitron);
   font-weight: 800;
@@ -80,6 +80,13 @@ main {
   line-height: 1.4;
 }
 
+.text-preset-5-bolder { 
+  font-family: var(--font-space-grotesk);
+  font-weight: 700;
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
 /* Button Styles*/
 @layer components {
   .btn-primary,
@@ -100,7 +107,7 @@ main {
   }
 
   .btn-ghost {
-    @apply bg-white text-oxford border border-platinum hover:bg-oxford/5 focus:ring-2 focus:ring-oxford/20;
+    @apply bg-transparent text-oxford hover:bg-oxford/5 focus:ring-2 focus:ring-oxford/20;
   }
 
   .btn-disabled {
@@ -108,6 +115,49 @@ main {
   }
 }
 
+.react-datepicker-popper {
+  z-index: 9999 !important;
+  top: -10px !important;
+}
 
+.react-datepicker {
+  @apply bg-oxford text-white rounded-sm shadow-lg border-none p-4;
+}
 
+.react-datepicker__header {
+  @apply bg-oxford text-white border-none;
+}
 
+.react-datepicker__current-month {
+  @apply text-white;
+}
+
+.react-datepicker__day-name {
+  @apply text-white;
+}
+
+.react-datepicker__day {
+  @apply text-white rounded-md;
+}
+
+.react-datepicker__day:hover {
+  @apply bg-white text-oxford;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  @apply bg-white! text-oxford;
+}
+
+.react-datepicker__day--today {
+  @apply font-bold;
+}
+
+.react-datepicker__triangle {
+  @apply hidden;
+}
+
+.react-datepicker__close-icon::after {
+  content: "x";
+  @apply text-oxford font-bold bg-transparent text-lg;
+}

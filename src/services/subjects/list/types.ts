@@ -1,4 +1,4 @@
-import { SubjectBase, Assignment } from "../types";
+import { SubjectBase } from "../types";
 
 export type SubjectQueryParams = {
   sortBy?: "name" | "progress" | "nextDelivery";
@@ -6,11 +6,6 @@ export type SubjectQueryParams = {
   search?: string;
 };
 
-type NextDelivery = Pick<Assignment, "dueDate" | "title">;
-
-type SubjectListItem = SubjectBase & {
-  progress: number;
-  nextDelivery: Array<NextDelivery> | null;
-}
+type SubjectListItem = SubjectBase
 
 export type SubjectListResponse = Array<SubjectListItem>;

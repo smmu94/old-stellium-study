@@ -7,6 +7,7 @@ export const ROUTES = {
   CONTACT: "/contact",
   AUTH: "/auth",
   DASHBOARD: "/dashboard",
+  CREATE: "dashboard/create",
   CALENDAR: "/dashboard/calendar",
   STATISTICS: "/dashboard/statistics",
   SETTINGS: "/dashboard/settings"

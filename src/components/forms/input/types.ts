@@ -3,7 +3,7 @@ export type InputProps = {
   placeholder?: string;
   name?: string;
   type?: string;
-  value?: string;
+  value?: string | null;
   onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   error?: string;
   disabled?: boolean;

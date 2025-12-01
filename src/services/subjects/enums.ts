@@ -14,6 +14,15 @@ export enum SubjectColorEnum {
   RED = 1,
   YELLOW = 2,
   GREEN = 3,
-  ROSE = 4,
-  GRAY = 5,
+  PURPLE = 4,
+  ROSE = 5
+}
+
+export enum SubjectIconEnum {
+  BOOK = 0,
+  CALCULATOR = 1,
+  FLASK = 2,
+  GLOBE = 3,
+  GEAR = 4,
+  PENCIL = 5, 
 }
