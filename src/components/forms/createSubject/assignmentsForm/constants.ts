@@ -1,5 +1,5 @@
 import { Assignment } from "@/services/subjects/types";
-import { SelectOption } from "../../select/types";
+import { SelectOption } from "@/components/forms/select/types";
 import { AssignmentStatusEnum, AssignmentTypeEnum } from "@/services/subjects/enums";
 
 export const STATUS_OPTIONS: SelectOption<Assignment["status"]>[] = [

@@ -1,6 +1,6 @@
 import { SubjectColorEnum, SubjectIconEnum } from "@/services/subjects/enums";
 import { Assignment, SubjectBase } from "@/services/subjects/types";
-import { SelectOption } from "../select/types";
+import { SelectOption } from "@/components/forms/select/types";
 
 export type CreateSubjectFormData = {
   generalInfo: {

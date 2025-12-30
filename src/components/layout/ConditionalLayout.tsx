@@ -5,7 +5,7 @@ import { RootState } from "@/store/store";
 import { useSelector } from "react-redux";
 import Footer from "./footer";
 import Navbar from "./navbar";
-import Loader from "../ui/loader";
+import Loader from "@/components/ui/loader";
 
 interface ConditionalLayoutProps {
   children: React.ReactNode;

@@ -1,4 +1,4 @@
-import { signInWithGoogle, signInWithEmail, signUpWithEmail, logOut, sendPasswordReset, mapFirebaseUserToSafeUser, handleFirebaseError, getFirebaseErrorMessage } from "../utils";
+import { signInWithGoogle, signInWithEmail, signUpWithEmail, logOut, sendPasswordReset, mapFirebaseUserToSafeUser, handleFirebaseError, getFirebaseErrorMessage } from "@/features/auth/utils";
 import toast from "react-hot-toast";
 
 const mockUser = { uid: "123", email: "test@example.com", displayName: "Test", photoURL: null };

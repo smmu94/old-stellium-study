@@ -1,4 +1,4 @@
-import { SubjectBase } from "../types";
+import { SubjectBase } from "@/services/subjects/types";
 
 export type SubjectQueryParams = {
   sortBy?: "name" | "progress" | "nextDelivery";

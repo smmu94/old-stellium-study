@@ -1,6 +1,6 @@
 import { BG_CLASSES, colorMap, ICON_MAP, SubjectColor } from "@/components/ui/cards/subjectCard/constants";
 import { SubjectColorEnum, SubjectIconEnum } from "@/services/subjects/enums";
-import { OptionsProps } from "../../options/types";
+import { OptionsProps } from "@/components/forms/options/types";
 
 export const ICON_LABELS: Record<SubjectIconEnum, string> = {
   [SubjectIconEnum.BOOK]: "Theory",

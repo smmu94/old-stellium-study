@@ -15,8 +15,8 @@ import {
   signInWithEmail,
   signInWithGoogle,
   signUpWithEmail,
-} from "../../../features/auth/utils";
-import Input from "../input";
+} from "@/features/auth/utils";
+import Input from "@/components/forms/input";
 import AuthTabs from "./components/authTabs/AuthTabs";
 import ForgotPassword from "./components/forgotPassword";
 import {

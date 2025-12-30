@@ -1,6 +1,5 @@
 import { useMutation, UseMutationOptions, UseMutationResult } from "@tanstack/react-query";
-import { API_KEY, BASE_URL } from "../../constants";
-import { SUBJECTS_KEY } from "../../constants";
+import { API_KEY, BASE_URL, SUBJECTS_KEY } from "@/services/constants";
 import { SubjectCreationBody, SubjectCreationResponse } from "./types";
 import { buildSubjectCreationResponseMock } from "./dataMock";
 

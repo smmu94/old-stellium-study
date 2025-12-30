@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import { SubjectColorEnum, SubjectIconEnum } from "../enums";
+import { SubjectColorEnum, SubjectIconEnum } from "@/services/subjects/enums";
 import { SubjectListResponse } from "./types";
 
 export const listMock: SubjectListResponse = Array.from({ length: 5 }).map(() => {

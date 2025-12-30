@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import { AssignmentStatusEnum, AssignmentTypeEnum, SubjectColorEnum, SubjectIconEnum } from "../enums";
+import { AssignmentStatusEnum, AssignmentTypeEnum, SubjectColorEnum, SubjectIconEnum } from "@/services/subjects/enums";
 import { SubjectCreationBody, SubjectCreationResponse } from "./types";
 
 export const SubjectbodyCreationMock: SubjectCreationBody = {

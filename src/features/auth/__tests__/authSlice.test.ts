@@ -1,5 +1,5 @@
-import { AuthState, SafeUser } from "../types";
-import authReducer, { setUser, setInitializing } from "../authSlice";
+import { AuthState, SafeUser } from "@/features/auth/types";
+import authReducer, { setUser, setInitializing } from "@/features/auth/authSlice";
 describe("authSlice", () => {
   const initialState: AuthState = {
     user: null,

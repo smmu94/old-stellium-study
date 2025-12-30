@@ -1,10 +1,10 @@
 import Button from "@/components/ui/button";
 import { Controller, useFieldArray, useFormContext } from "react-hook-form";
 import { FaCalendar } from "react-icons/fa";
-import DatePicker from "../../datePicker";
-import Input from "../../input";
-import Select from "../../select";
-import { CreateSubjectFormData as FormData } from "../form";
+import DatePicker from "@/components/forms/datePicker";
+import Input from "@/components/forms/input";
+import Select from "@/components/forms/select";
+import { CreateSubjectFormData as FormData } from "@/components/forms/createSubject/form";
 import { STATUS_OPTIONS, TYPE_OPTIONS } from "./constants";
 
 export default function AssignmentsForm() {

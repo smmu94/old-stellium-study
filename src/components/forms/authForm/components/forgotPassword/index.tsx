@@ -5,10 +5,10 @@ import { handleFirebaseError, sendPasswordReset } from "@/features/auth/utils";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import Input from "../../../input";
-import { ForgotPasswordFormData, initialForgotPasswordFormData } from "../../form";
-import { forgotPasswordSchema } from "../../schema";
-import { ForgotPasswordProps } from "../../types";
+import Input from "@/components/forms/input";
+import { ForgotPasswordFormData, initialForgotPasswordFormData } from "@/components/forms/authForm/form";
+import { forgotPasswordSchema } from "@/components/forms/authForm/schema";
+import { ForgotPasswordProps } from "@/components/forms/authForm/types";
 
 export default function ForgotPassword({ onBackToLogin }: ForgotPasswordProps) {
   const { control, handleSubmit, formState: { errors }, reset } = useForm<ForgotPasswordFormData>({

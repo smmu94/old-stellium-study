@@ -3,8 +3,8 @@ import "@testing-library/jest-dom";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { FormProvider, useForm } from "react-hook-form";
 import AssignmentsForm from ".";
-import { CreateSubjectFormData, initialData } from "../form";
-import { createSubjectSchema } from "../schema";
+import { CreateSubjectFormData, initialData } from "@/components/forms/createSubject/form";
+import { createSubjectSchema } from "@/components/forms/createSubject/schema";
 
 const Wrapper = ({ children }: { children: React.ReactNode }) => {
   const methods = useForm<CreateSubjectFormData>({

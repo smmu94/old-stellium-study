@@ -1,7 +1,7 @@
 import { useQuery, UseQueryOptions, UseQueryResult } from "@tanstack/react-query";
 import { listMock } from "./dataMock";
 import { SubjectListResponse, SubjectQueryParams } from "./types";
-import { SUBJECTS_KEY } from "../../constants";
+import { SUBJECTS_KEY } from "@/services/constants";
 export function useGetSubjectList(
   queryParams: SubjectQueryParams = {},
   options?: Omit<UseQueryOptions<SubjectListResponse, Error>, "queryKey" | "queryFn">

@@ -1,4 +1,4 @@
-import { BG_CLASSES, colorMap, ICON_MAP } from "../subjectCard/constants";
+import { BG_CLASSES, colorMap, ICON_MAP } from "@/components/ui/cards/subjectCard/constants";
 import { ReminderCardProps } from "./types";
 
 export default function ReminderCard({ title, events }: ReminderCardProps) {

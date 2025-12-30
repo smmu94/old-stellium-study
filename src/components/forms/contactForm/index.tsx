@@ -5,7 +5,7 @@ import emailjs from "emailjs-com";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import Input from "../input";
+import Input from "@/components/forms/input";
 import { CONTACT_FORM_EMAIL_PUBLIC_KEY, CONTACT_FORM_EMAIL_SERVICE_ID, CONTACT_FORM_EMAIL_TEMPLATE_ID } from "./constants";
 import { FormData, initialFormData } from "./form";
 import { contactFormSchema } from "./schema";

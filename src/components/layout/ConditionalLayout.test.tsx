@@ -20,7 +20,7 @@ jest.mock("./navbar", () => {
   };
 });
 
-jest.mock("../ui/loader", () => {
+jest.mock("@/components/ui/loader", () => {
   return function MockLoader() {
     return <div data-testid="loader">Mocked Loader</div>;
   };

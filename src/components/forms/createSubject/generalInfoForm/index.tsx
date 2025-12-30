@@ -1,7 +1,7 @@
 import { Controller, useFormContext } from "react-hook-form";
-import Input from "../../input";
-import Options from "../../options";
-import { CreateSubjectFormData as FormData } from "../form";
+import Input from "@/components/forms/input";
+import Options from "@/components/forms/options";
+import { CreateSubjectFormData as FormData } from "@/components/forms/createSubject/form";
 import { COLOR_OPTIONS, ICON_OPTIONS } from "./constants";
 
 export default function GeneralInfoForm() {

@@ -1,7 +1,7 @@
-import { setUser, setInitializing } from "../authSlice";
-import * as authUtils from "../utils";
+import { setUser, setInitializing } from "@/features/auth/authSlice";
+import * as authUtils from "@/features/auth/utils";
 import { onAuthStateChanged } from "firebase/auth";
-import { handleLogout, listenToAuthChanges } from "../authThunks";
+import { handleLogout, listenToAuthChanges } from "@/features/auth/authThunks";
 
 jest.mock("firebase/auth", () => {
   return {
@@ -14,7 +14,7 @@ jest.mock("firebase/auth", () => {
   };
 });
 
-jest.mock("../utils", () => ({
+jest.mock("@/features/auth/utils", () => ({
   mapFirebaseUserToSafeUser: jest.fn(),
   handleFirebaseError: jest.fn(),
   logOut: jest.fn(),
