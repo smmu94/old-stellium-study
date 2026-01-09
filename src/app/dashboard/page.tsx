@@ -9,7 +9,7 @@ import { RootState } from "@/store/store";
 import { getNextDelivery } from "@/utils/date";
 import { useState } from "react";
 import { FaBell, FaBook, FaFlask, FaRobot, FaTimes } from "react-icons/fa";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { ROUTES } from "@/utils/routes/routes";
 
@@ -34,11 +34,11 @@ const ReminderAside = () => (
 );
 
 export default function DashboardPage() {
-  const { user } = useSelector((state: RootState) => state.auth);
+  // const { user } = useSelector((state: RootState) => state.auth);
   const { status, data, error } = useGetSubjectList();
   const [isAsideOpen, setIsAsideOpen] = useState(false);
 
-  const username = user?.displayName || user?.email?.split("@")[0];
+  // const username = user?.displayName || user?.email?.split("@")[0];
   const router = useRouter();
 
   const goToCreateSubject = () => {
@@ -50,7 +50,7 @@ export default function DashboardPage() {
       <header className="flex flex-col items-start gap-4 lg:flex-row lg:justify-between lg:items-center mb-10">
         <div>
           <h1 className="text-preset-2 font-bold text-oxford">
-            Welcome back, {username}!
+            {/* Welcome back, {username}! */}
           </h1>
           <p className="text-oxford mt-2">Monday, April 24, 2025</p>
         </div>

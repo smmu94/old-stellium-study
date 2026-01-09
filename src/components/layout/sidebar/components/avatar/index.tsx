@@ -1,9 +1,11 @@
-import { RootState } from "@/store/store";
-import { useSelector } from "react-redux";
 import Image from "next/image";
 
 export default function Avatar() {
-  const { user } = useSelector((state: RootState) => state.auth);
+  const user = {
+    photoURL: "https://example.com/avatar.jpg",
+    displayName: "John Doe",
+    email: "john.doe@example.com"
+  }
   return (
     <div className="flex flex-col items-center gap-2 mb-6 pb-6">
       <div className="w-18 h-18 rounded-full bg-jasmine flex items-center justify-center overflow-hidden">

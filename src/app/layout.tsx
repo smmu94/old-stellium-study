@@ -1,13 +1,14 @@
-import ConditionalLayout from "@/components/layout/ConditionalLayout";
-import { APP_CONFIG, BRAND_ASSETS } from "@/config/constants";
+import { queryClient } from "@/lib/react-query";
+import { QueryClientProvider } from "@tanstack/react-query";
 import type { Metadata } from "next";
 import { Orbitron, Space_Grotesk } from "next/font/google";
-import { Toaster } from "react-hot-toast";
-import ReduxProvider from "@/store/ReduxProvider";
-import { QueryClientProvider } from "@tanstack/react-query";
-import { queryClient } from "@/lib/react-query";
 import "react-datepicker/dist/react-datepicker.css";
+import { Toaster } from "react-hot-toast";
+import { APP_CONFIG, BRAND_ASSETS } from "../config/constants";
 import "./globals.css";
+import AuthProvider from "@/components/providers/SessionProvider";
+import Footer from "@/components/layout/footer";
+import Navbar from "@/components/layout/navbar";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -35,12 +36,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className={`${spaceGrotesk.className} ${orbitron.variable} ${spaceGrotesk.variable} h-full flex flex-col`}
       >
         <QueryClientProvider client={queryClient}>
-          <ReduxProvider>
-            <ConditionalLayout>
-              <Toaster position="bottom-right" />
-              {children}
-            </ConditionalLayout>
-          </ReduxProvider>
+          <AuthProvider>
+            <Toaster position="bottom-right" />
+            <div className="h-full flex flex-col">
+              <Navbar />
+              <main className="flex-1 overflow-y-auto p-10">{children}</main>
+              <Footer />
+            </div>
+          </AuthProvider>
         </QueryClientProvider>
       </body>
     </html>

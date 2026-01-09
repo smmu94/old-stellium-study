@@ -1,7 +1,7 @@
 "use client";
 
 import Button from "@/components/ui/button";
-import { handleLogout } from "@/features/auth/authThunks";
+// import { handleLogout } from "@/features/auth/authThunks";
 import { ROUTES } from "@/utils/routes/routes";
 import { useRouter, usePathname } from "next/navigation";
 import Item from "./components/item";
@@ -14,10 +14,10 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
   const router = useRouter();
   const pathname = usePathname();
 
-  const onLogout = async () => {
-    await handleLogout();
-    router.replace(ROUTES.AUTH);
-  };
+  // const onLogout = async () => {
+  //   await handleLogout();
+  //   router.replace(ROUTES.AUTH);
+  // };
 
   return (
     <aside 
@@ -35,7 +35,7 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
       >
         <FaTimes size={24} />
       </button>
-      <Avatar />
+      {/* <Avatar /> */}
       <nav className="flex-1 flex flex-col gap-1">
         {DASHBOARD_ITEMS.map((item) => (
           <Item 
@@ -47,7 +47,8 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
         ))}
       </nav>
       <div className="mt-auto">
-        <Button fullWidth onClick={onLogout}>
+        {/* <Button fullWidth onClick={onLogout}> */}
+        <Button fullWidth>
             Log Out
         </Button>
       </div>

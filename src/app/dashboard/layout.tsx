@@ -7,7 +7,7 @@ import { RootState } from "@/store/store";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { FaBars } from "react-icons/fa";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 export default function DashboardLayout({ 
   children 
@@ -18,11 +18,11 @@ export default function DashboardLayout({
   const pathname = usePathname();
   const currentPage = DASHBOARD_ITEMS.find(item => item.href === pathname);
   const pageTitle = currentPage?.title || "Dashboard";
-  const { user, loading } = useSelector((state: RootState) => state.auth);
+  // const { user, loading } = useSelector((state: RootState) => state.auth);
 
-  if (loading || !user) {
-    return <Loader />
-  }
+  // if (loading || !user) {
+  //   return <Loader />
+  // }
 
   return (
     <div className="flex h-screen min-h-0 bg-platinum">
