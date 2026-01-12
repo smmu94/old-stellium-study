@@ -7,7 +7,7 @@ import { COLOR_OPTIONS, ICON_OPTIONS } from "./constants";
 export default function GeneralInfoForm() {
   const { control, formState: { errors }} = useFormContext<FormData>()
   return (
-    <div className="border border-oxford/50 bg-white shadow-[5px_5px_0px_#0a0f29] rounded-sm max-w-2xl h-full w-full p-6 overflow-y-auto lg:overflow-y-auto scrollbar-thin scrollbar-thumb-oxford scrollbar-track-transparent flex flex-col gap-4">
+    <div className="border border-oxford/50 bg-white shadow-[5px_5px_0px_#0a0f29] rounded-sm max-w-2xl h-full w-full p-6 overflow-y-auto lg:overflow-y-auto custom-scrollbar flex flex-col gap-4">
       <h2 className="text-preset-3-bolder text-oxford">General Information</h2>
       <div className="flex flex-col lg:flex-row gap-4">
         <div className="flex-1">

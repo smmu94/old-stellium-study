@@ -29,7 +29,7 @@ export default function SubjectCard({
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") onClick?.();
       }}
-      className={`flex flex-col w-3xs gap-5 rounded-sm p-6 cursor-pointer transition-transform border border-oxford/50 bg-white shadow-[5px_5px_0px_#0a0f29] hover:scale-103 ${
+      className={`flex flex-col w-full gap-5 rounded-sm p-6 cursor-pointer transition-transform border border-oxford/50 bg-white shadow-[5px_5px_0px_#0a0f29] hover:scale-103 ${
         colorKey === "blue" ? "text-white" : "text-oxford"
       }`}
     >

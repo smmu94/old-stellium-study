@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@plugin "tailwind-scrollbar";
 
 @theme {
   /* Stellium Study - Minimal Palette */
@@ -160,4 +159,23 @@ main {
 .react-datepicker__close-icon::after {
   content: "x";
   @apply text-oxford font-bold bg-transparent text-lg;
+}
+
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-oxford/20 rounded-full;
+    border: 2px solid transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-oxford/40;
+  }
 }

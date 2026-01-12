@@ -7,8 +7,6 @@ import { Toaster } from "react-hot-toast";
 import { APP_CONFIG, BRAND_ASSETS } from "../config/constants";
 import "./globals.css";
 import AuthProvider from "@/components/providers/SessionProvider";
-import Footer from "@/components/layout/footer";
-import Navbar from "@/components/layout/navbar";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -39,9 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <AuthProvider>
             <Toaster position="bottom-right" />
             <div className="h-full flex flex-col">
-              <Navbar />
-              <main className="flex-1 overflow-y-auto p-10">{children}</main>
-              <Footer />
+              <main>{children}</main>
             </div>
           </AuthProvider>
         </QueryClientProvider>

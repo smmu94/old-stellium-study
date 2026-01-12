@@ -2,12 +2,9 @@
 
 import Sidebar from "@/components/layout/sidebar";
 import { DASHBOARD_ITEMS } from "@/components/layout/sidebar/constants";
-import Loader from "@/components/ui/loader";
-import { RootState } from "@/store/store";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { FaBars } from "react-icons/fa";
-// import { useSelector } from "react-redux";
 
 export default function DashboardLayout({ 
   children 
@@ -18,11 +15,6 @@ export default function DashboardLayout({
   const pathname = usePathname();
   const currentPage = DASHBOARD_ITEMS.find(item => item.href === pathname);
   const pageTitle = currentPage?.title || "Dashboard";
-  // const { user, loading } = useSelector((state: RootState) => state.auth);
-
-  // if (loading || !user) {
-  //   return <Loader />
-  // }
 
   return (
     <div className="flex h-screen min-h-0 bg-platinum">
@@ -41,7 +33,7 @@ export default function DashboardLayout({
           </button>
           <h1 className="text-preset-3-bolder text-oxford">{pageTitle}</h1>
         </header>
-        <main className="flex-1 min-h-0 overflow-auto p-6 scrollbar-thin scrollbar-thumb-oxford scrollbar-track-transparent">
+        <main className="flex-1 min-h-0 overflow-auto p-6 custom-scrollbar">
           {children}
         </main>
       </div>

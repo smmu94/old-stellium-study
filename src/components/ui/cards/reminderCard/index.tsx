@@ -5,7 +5,7 @@ export default function ReminderCard({ title, events }: ReminderCardProps) {
   return (
     <div className="flex flex-col w-full gap-4 rounded-sm p-5 shadow-md border border-oxford/50 bg-white">
       <h4 className="text-preset-3-bolder mb-2 text-oxford">{title}</h4>
-      <ul className="flex flex-col gap-4 p-0 m-0 max-h-48 overflow-y-auto scrollbar-thin scrollbar-thumb-oxford scrollbar-track-transparent">
+      <ul className="flex flex-col gap-4 p-0 m-0 max-h-48 overflow-y-auto custom-scrollbar">
         {events.map((event, index) => {
           const IconComponent = event.icon !== undefined ? ICON_MAP[event.icon] : null;
           return (

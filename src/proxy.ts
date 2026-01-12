@@ -30,5 +30,9 @@ export async function proxy(req: NextRequest) {
   return NextResponse.next();
 }
 export const config = {
-  matcher: ["/((?!api/auth|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)"]
+  matcher: [
+    "/dashboard/:path*",
+    "/auth/:path*",
+    "/",
+  ]
 };

@@ -44,7 +44,7 @@ export default function AssignmentsForm() {
   };
 
   return (
-    <div className="flex flex-col gap-4 border border-oxford/50 bg-white shadow-[5px_5px_0px_#0a0f29] rounded-sm max-w-2xl h-full w-full p-6 overflow-y-auto lg:overflow-y-auto scrollbar-thin scrollbar-thumb-oxford scrollbar-track-transparent">
+    <div className="flex flex-col gap-4 border border-oxford/50 bg-white shadow-[5px_5px_0px_#0a0f29] rounded-sm max-w-2xl h-full w-full p-6 overflow-y-auto lg:overflow-y-auto custom-scrollbar">
       <h2 className="text-preset-3-bolder text-oxford">Assignments, Tests and Tasks</h2>
       <section className="flex flex-col gap-4 p-4 border border-oxford/30 rounded-md bg-white">
         <div className={"flex flex-col lg:flex-row gap-4"}>
@@ -127,7 +127,7 @@ export default function AssignmentsForm() {
         </p>
       )}
       {fields.length > 0 ? (
-        <div className="flex flex-col gap-2 max-h-32 overflow-y-auto scrollbar-thin scrollbar-thumb-oxford scrollbar-track-transparent pr-2">
+        <div className="flex flex-col gap-2 max-h-32 overflow-y-auto custom-scrollbar pr-2">
           {fields.map((field, index) => (
             <section
               key={field.id}
