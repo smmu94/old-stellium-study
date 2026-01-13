@@ -1,5 +1,5 @@
 import { NextDeliveryUI } from "@/components/ui/cards/subjectCard/types";
-import { NextDelivery } from "@/services/subjects/types";
+import { NextDelivery } from "@/lib/definitions";
 
 export const getNextDelivery = (nextDeliveries?: NextDelivery | null): NextDeliveryUI | undefined => {
   if (!nextDeliveries) return undefined;

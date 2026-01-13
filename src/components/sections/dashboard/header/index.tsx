@@ -1,16 +1,17 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { FaBell } from "react-icons/fa";
 import Button from "@/components/ui/button";
 import { ROUTES } from "@/utils/routes/routes";
+import { useRouter } from "next/navigation";
 
+// src/components/sections/dashboard/header/index.tsx
 interface HeaderProps {
   username: string;
   today: string;
+  mobileTrigger: React.ReactNode; // Nueva prop
 }
 
-export default function Header({ username, today }: HeaderProps) {
+export default function Header({ username, today, mobileTrigger }: HeaderProps) {
   const router = useRouter();
   
   return (
@@ -21,12 +22,10 @@ export default function Header({ username, today }: HeaderProps) {
         </h1>
         <p className="text-oxford/70 mt-1 first-letter:uppercase">{today}</p>
       </div>
-      <div className="flex items-center gap-3 w-full lg:w-auto">
-        <div className="xl:hidden flex-1">
-          <Button fullWidth onClick={() => {}} style="secondary">
-            <FaBell className="mr-2" /> Recordatorios
-          </Button>
-        </div>
+      <div className="flex items-center gap-3">
+        {/* Aquí se renderiza el MobileRemindersWrapper que contiene el botón y el Aside móvil */}
+        {mobileTrigger}
+        
         <Button onClick={() => router.push(ROUTES.CREATE)}>
           Nueva Materia
         </Button>

@@ -1,7 +1,6 @@
 "use client";
 
 import Button from "@/components/ui/button";
-// import { handleFirebaseError, sendPasswordReset } from "@/features/auth/utils";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
@@ -21,12 +20,6 @@ export default function ForgotPassword({ onBackToLogin }: ForgotPasswordProps) {
   const onSubmit = handleSubmit(async (data) => {
     setSubmitting(true);
     setSuccess(false);
-    // const { error } = await sendPasswordReset(data.email);
-    // if (error) {
-    //   handleFirebaseError(error);
-    // } else {
-    //   setSuccess(true);
-    // }
     setSubmitting(false);
   });
 

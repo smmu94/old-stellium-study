@@ -1,41 +1,24 @@
-// src/app/dashboard/components/reminders/ReminderAside.tsx
+// src/components/sections/dashboard/reminders/index.tsx
 import ReminderCard from "@/components/ui/cards/reminderCard";
-import { ReminderCardProps } from "@/components/ui/cards/reminderCard/types";
+import { getRemindersData } from "@/lib/data";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 
-// Estos mocks eventualmente vendrán de una base de datos o una API
-const events: ReminderCardProps["events"] = [
-  { icon: 3, name: "Clase de Matemáticas", dateTime: "10:00 AM - 11:30 AM" },
-  { icon: 4, name: "Laboratorio Física", dateTime: "1:00 PM - 3:00 PM" },
-  { icon: 1, name: "Reunión Robótica", dateTime: "3:30 PM - 4:30 PM" },
-];
+export default async function Reminders() {
+  const session = await getServerSession(authOptions);
+  if (!session) return null;
 
-const deadlines: ReminderCardProps["events"] = [
-  { name: "Tarea Cálculo", dateTime: "Enero 25", dotColor: 4 },
-  { name: "Proyecto Final", dateTime: "Enero 28", dotColor: 1 },
-  { name: "Examen Física", dateTime: "Febrero 2", dotColor: 2 },
-];
+  const { events, deadlines } = await getRemindersData(session.user.id);
 
-export default function Reminders() {
+  const isEmpty = events.length === 0 && deadlines.length === 0;
+
   return (
     <div className="flex flex-col gap-6">
-      <section>
-        <ReminderCard 
-          title="Eventos de Hoy" 
-          events={events} 
-        />
-      </section>
-      
-      <section>
-        <ReminderCard 
-          title="Próximas Entregas" 
-          events={deadlines} 
-        />
-      </section>
-
-      {/* Tip A1: Puedes agregar un CTA rápido aquí si no hay recordatorios */}
-      {events.length === 0 && deadlines.length === 0 && (
+      <ReminderCard title="Eventos de Hoy" events={events} />
+      <ReminderCard title="Próximas Entregas" events={deadlines} />
+      {isEmpty && (
         <div className="p-4 text-center border-2 border-dashed border-oxford/10 rounded-xl">
-          <p className="text-sm text-oxford/50">No tienes pendientes para hoy</p>
+          <p className="text-sm text-oxford/50">Todo al día por aquí 🚀</p>
         </div>
       )}
     </div>

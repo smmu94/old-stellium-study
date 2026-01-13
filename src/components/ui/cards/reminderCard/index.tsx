@@ -15,8 +15,8 @@ export default function ReminderCard({ title, events }: ReminderCardProps) {
                   <IconComponent />
                 </span>
               )}
-              {event.dotColor && (
-                <span className={`w-4 h-4 rounded-sm ${BG_CLASSES[colorMap[event.dotColor]]}`}></span>
+              {(event.dotColor !== undefined && event.dotColor !== null) && (
+                <span className={`w-4 h-4 rounded-sm shrink-0 mt-1 ${BG_CLASSES[colorMap[event.dotColor]]}`}></span>
               )}
               <div className="flex flex-col">
                 <span className="text-oxford text-preset-4-bolder">{event.name}</span>
