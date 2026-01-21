@@ -1,30 +1,34 @@
 // src/app/dashboard/page.tsx
-import { Suspense } from "react";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
-import SubjectsList from "@/components/sections/dashboard/subjectsList";
-import Reminders from "@/components/sections/dashboard/reminders";
 import Header from "@/components/sections/dashboard/header";
-import SubjectCard from "@/components/ui/cards/subjectCard";
+import Reminders from "@/components/sections/dashboard/reminders";
 import MobileRemindersWrapper from "@/components/sections/dashboard/reminders/MobileRemindersWrapper";
+import SubjectsList from "@/components/sections/dashboard/subjectsList";
+import SubjectCard from "@/components/ui/cards/subjectCard";
+import { authOptions } from "@/lib/auth";
+import { getServerSession } from "next-auth";
+import { Suspense } from "react";
 
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
   const username = session?.user?.name || "Estudiante";
-  
-  const today = new Date().toLocaleDateString("es-ES", {
+
+  const today = new Date().toLocaleDateString("en-EN", {
     weekday: "long",
     year: "numeric",
     month: "long",
     day: "numeric",
   });
 
-  // Renderizamos el componente de recordatorios una sola vez
+  // Renderizamos el componente de Reminders una sola vez
   const remindersNode = (
-    <Suspense fallback={<div className="animate-pulse space-y-4">
-      <div className="h-32 bg-oxford/5 rounded-sm" />
-      <div className="h-32 bg-oxford/5 rounded-sm" />
-    </div>}>
+    <Suspense
+      fallback={
+        <div className="animate-pulse space-y-4">
+          <div className="h-32 bg-oxford/5 rounded-sm" />
+          <div className="h-32 bg-oxford/5 rounded-sm" />
+        </div>
+      }
+    >
       <Reminders />
     </Suspense>
   );
@@ -32,9 +36,9 @@ export default async function DashboardPage() {
   return (
     <div className="flex flex-col gap-6 h-full min-h-0">
       {/* Header con el Trigger para móviles inyectado */}
-      <Header 
-        username={username} 
-        today={today} 
+      <Header
+        username={username}
+        today={today}
         mobileTrigger={
           <MobileRemindersWrapper>
             {remindersNode}
@@ -59,8 +63,10 @@ export default async function DashboardPage() {
         </div>
 
         {/* Lado Derecho: Aside Fijo (Solo Desktop) */}
-        <aside className="hidden xl:flex xl:w-xs flex-col gap-6 bg-jasmine/20 border-l border-oxford/10 p-6 overflow-y-auto custom-scrollbar">
-          <h3 className="text-preset-3-bolder text-oxford">Recordatorios</h3>
+        <aside className="hidden xl:flex xl:w-xs flex-col gap-6 bg-jasmine border-l border-oxford/10 p-6 overflow-y-auto custom-scrollbar">
+          <h3 className="text-preset-3-bolder text-oxford">
+                        Reminders
+          </h3>
           {remindersNode}
         </aside>
       </section>

@@ -6,6 +6,7 @@ import { Controller, FieldErrors, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { signIn } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "react-hot-toast"; // Importamos toast
 
 import Button from "@/components/ui/button";
 import Input from "@/components/forms/input";
@@ -13,7 +14,7 @@ import AuthTabs from "./components/authTabs/AuthTabs";
 import ForgotPassword from "./components/forgotPassword";
 
 import { ROUTES } from "@/utils/routes/routes";
-import { registerUserAction } from "@/lib/actions"; // Tu Server Action de Postgres
+import { registerUserAction } from "@/lib/actions";
 import {
   initialSignInFormData,
   initialSignUpFormData,
@@ -54,29 +55,44 @@ export default function AuthForm({ isSignIn, setIsSignIn }: AuthFormProps) {
 
     try {
       if (isSignIn) {
-        // --- LÓGICA DE INICIO DE SESIÓN (NEXT-AUTH) ---
+        // --- LÓGICA DE INICIO DE SESIÓN ---
         const result = await signIn("credentials", {
-          email: data.email,
+          email: data.email.toLowerCase(),
           password: data.password,
-          redirect: false, // Manejamos la redirección manualmente para mostrar errores
+          redirect: false,
         });
 
         if (result?.error) {
-          setError("Invalid email or password");
+          setError("Email o contraseña incorrectos");
         } else {
           router.push(ROUTES.DASHBOARD);
-          router.refresh(); // Asegura que el middleware reconozca la nueva sesión
+          router.refresh();
         }
       } else {
-        // --- LÓGICA DE REGISTRO (SERVER ACTION + POSTGRES) ---
+        // --- LÓGICA DE REGISTRO + AUTO-LOGIN ---
         const response = await registerUserAction(data as SignUpFormData);
 
         if (response?.error) {
           setError(response.error);
         } else {
-          // Registro exitoso: movemos al usuario al login
-          setIsSignIn(true);
-          // Opcional: podrías usar un toast aquí para avisar que se creó la cuenta
+          // 1. Toast de éxito de creación
+          toast.success("Account created successfully!", { icon: "🚀" });
+
+          // 2. Auto-login inmediato
+          const autoLogin = await signIn("credentials", {
+            email: data.email.toLowerCase(),
+            password: data.password,
+            redirect: false,
+          });
+
+          if (autoLogin?.error) {
+            // Fallback: si falla el autologin, lo mandamos al login manual
+            setIsSignIn(true);
+            setError("Account created. Please log in.");
+          } else {
+            router.push(ROUTES.DASHBOARD);
+            router.refresh();
+          }
         }
       }
     } catch (err) {
@@ -88,7 +104,6 @@ export default function AuthForm({ isSignIn, setIsSignIn }: AuthFormProps) {
 
   const handleGoogleSignIn = async () => {
     setSubmitting(true);
-    // NextAuth maneja todo el popup y la redirección de Google
     await signIn("google", { callbackUrl: ROUTES.DASHBOARD });
   };
 
@@ -104,12 +119,11 @@ export default function AuthForm({ isSignIn, setIsSignIn }: AuthFormProps) {
   }
 
   return (
-    <div className="p-8 border border-solid rounded-xl border-platinum bg-white flex flex-col items-center gap-6 w-full max-w-lg">
+    <div className="p-8 border border-solid rounded-xl border-platinum bg-white flex flex-col items-center gap-6 w-full max-w-lg shadow-sm">
       <AuthTabs isSignIn={isSignIn} setIsSignIn={setIsSignIn} />
       
-      {/* Mensaje de error general */}
       {error && (
-        <div className="w-full p-3 text-sm text-white bg-red-500 rounded-md text-center">
+        <div className="w-full p-3 text-sm text-white bg-vermilion rounded-md text-center font-bold animate-shake">
           {error}
         </div>
       )}
@@ -123,7 +137,7 @@ export default function AuthForm({ isSignIn, setIsSignIn }: AuthFormProps) {
               <Input
                 {...field}
                 label="Name"
-                placeholder="Enter your name"
+                placeholder="Your name"
                 error={signUpErrors.name?.message}
               />
             )}
@@ -136,7 +150,7 @@ export default function AuthForm({ isSignIn, setIsSignIn }: AuthFormProps) {
             <Input
               {...field}
               label="Email"
-              placeholder="Enter your email"
+              placeholder="correo@ejemplo.com"
               type="email"
               error={errors.email?.message}
             />
@@ -149,7 +163,7 @@ export default function AuthForm({ isSignIn, setIsSignIn }: AuthFormProps) {
             <Input
               {...field}
               label="Password"
-              placeholder="Enter your password"
+              placeholder="••••••••"
               type="password"
               error={errors.password?.message}
             />
@@ -159,15 +173,15 @@ export default function AuthForm({ isSignIn, setIsSignIn }: AuthFormProps) {
         {isSignIn && (
           <span
             onClick={() => setForgotView(true)}
-            className="text-preset-4-bolder text-vermilion flex justify-end cursor-pointer mb-4"
+            className="text-preset-4-bolder text-vermilion flex justify-end cursor-pointer mb-4 hover:underline"
           >
-            Forgot Password?
+            Forgot your password?
           </span>
         )}
 
         <div className="flex flex-col gap-3 mt-6">
           <Button type="submit" style="primary" fullWidth loading={submitting}>
-            {isSignIn ? "Sign In" : "Sign Up"}
+            {isSignIn ? "Sign in" : "Sign up"}
           </Button>
 
           <Button
@@ -187,7 +201,7 @@ export default function AuthForm({ isSignIn, setIsSignIn }: AuthFormProps) {
         <p className="text-center text-preset-4 text-oxford">
           Don&apos;t have an account?{" "}
           <span
-            className="text-vermilion cursor-pointer text-preset-4-bolder"
+            className="text-vermilion cursor-pointer text-preset-4-bolder hover:underline"
             onClick={() => setIsSignIn(false)}
           >
             Sign up

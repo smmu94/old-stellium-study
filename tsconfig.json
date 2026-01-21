@@ -36,7 +36,6 @@
       "@/utils/*": ["./src/utils/*"],
       //Estos ultimos se borrarán cuando se haga la migración completa a next auth y server actions
       "@/services/*": ["./src/services/*"],
-      "@/config/*": ["./src/config/*"]
     }
   },
   "include": [

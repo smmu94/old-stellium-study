@@ -1,8 +1,10 @@
 // src/lib/data.ts
-import { sql } from "@vercel/postgres";
 import { SubjectListResponse } from "@/lib/definitions";
+import { sql } from "@vercel/postgres";
 
-export async function getSubjects(userId: string): Promise<SubjectListResponse> {
+export async function getSubjects(
+  userId: string,
+): Promise<SubjectListResponse> {
   try {
     const result = await sql`
       SELECT 
@@ -24,12 +26,14 @@ export async function getSubjects(userId: string): Promise<SubjectListResponse> 
       ORDER BY s.created_at DESC
     `;
 
-    return result.rows.map(row => ({
+    return result.rows.map((row) => ({
       ...row,
       // Ahora enviamos la lista completa de tareas encontradas
-      next_delivery: row.next_delivery_json ? {
-        tasks: row.next_delivery_json 
-      } : null
+      next_delivery: row.next_delivery_json
+        ? {
+          tasks: row.next_delivery_json,
+        }
+        : null,
     })) as SubjectListResponse;
   } catch (error) {
     console.error("Error al obtener materias:", error);
@@ -61,19 +65,22 @@ export async function getRemindersData(userId: string) {
       LIMIT 5
     `;
 
-    const [classes, deadlines] = await Promise.all([classesPromise, deadlinesPromise]);
+    const [classes, deadlines] = await Promise.all([
+      classesPromise,
+      deadlinesPromise,
+    ]);
 
     return {
-      events: classes.rows.map(c => ({
+      events: classes.rows.map((c) => ({
         name: c.name, // Mapeo explícito
         icon: c.icon,
-        dateTime: `${c.start_time.slice(0, 5)} - ${c.end_time.slice(0, 5)}`
+        dateTime: `${c.start_time.slice(0, 5)} - ${c.end_time.slice(0, 5)}`,
       })),
-      deadlines: deadlines.rows.map(d => ({
-        name: d.name, // Mapeo explícito
+      deadlines: deadlines.rows.map((d) => ({
+        name: d.name,
         dotColor: d.dotColor,
-        dateTime: new Date(d.due_date).toLocaleDateString("es-ES", { month: "long", day: "numeric" })
-      }))
+        dateTime: d.due_date, // Enviamos la fecha pura (Date o string ISO)
+      })),
     };
   } catch (error) {
     console.error("Error fetching reminders:", error);

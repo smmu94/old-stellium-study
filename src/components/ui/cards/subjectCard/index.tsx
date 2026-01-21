@@ -33,9 +33,10 @@ export default function SubjectCard({
   const getDaysLeft = (dateStr: string) => {
     const due = new Date(dateStr);
     const today = new Date();
+    due.setHours(0, 0, 0, 0);
     today.setHours(0, 0, 0, 0);
-    const diff = due.getTime() - today.getTime();
-    return Math.ceil(diff / (1000 * 60 * 60 * 24));
+    const diffInMs = due.getTime() - today.getTime();
+    return Math.floor(diffInMs / 86400000);
   };
 
   return (
@@ -93,7 +94,7 @@ export default function SubjectCard({
           {tasks.length > 0 ? (
             tasks.map((task, index) => {
               const days = getDaysLeft(task.due_date);
-              const isToday = days === 0;
+              const isToday = days <= 0;
 
               return (
                 <div
@@ -108,7 +109,11 @@ export default function SubjectCard({
                   </span>
 
                   <span
-                    className={`text-preset-4-bolder whitespace-nowrap ${isToday ? "text-vermilion animate-pulse" : "text-oxford/80 bg-jasmine px-4 py-1 rounded-2xl"}`}
+                    className={`text-preset-4-bolder whitespace-nowrap ${
+                      isToday
+                        ? "text-vermilion animate-pulse"
+                        : "text-oxford/80 bg-jasmine px-4 py-1 rounded-2xl"
+                    }`}
                   >
                     {isToday ? "TODAY!" : `in ${days}d`}
                   </span>
@@ -117,7 +122,7 @@ export default function SubjectCard({
             })
           ) : (
             <span className="text-oxford/70 text-preset-4 italic">
-              No upcoming deliveries
+                            No upcoming deliveries
             </span>
           )}
         </div>

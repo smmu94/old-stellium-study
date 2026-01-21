@@ -40,7 +40,7 @@ export default function Avatar() {
           </span>
         )}
       </div>
-      
+
       <div className="flex flex-col items-center overflow-hidden w-full">
         <p className="text-preset-3-bolder text-white text-center truncate w-full px-2">
           {user?.name || "Estudiante"}

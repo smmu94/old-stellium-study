@@ -4,26 +4,30 @@ import Button from "@/components/ui/button";
 import { useState } from "react";
 import { FaBell, FaTimes } from "react-icons/fa";
 
-export default function MobileRemindersWrapper({ children }: { children: React.ReactNode }) {
-  const [isOpen, setIsOpen] = useState(false);
+export default function MobileRemindersWrapper({
+  children,
+}: {
+    children: React.ReactNode;
+}) {
+  const [isOpen, setIsOpen] = useState(true);
 
   return (
     <>
       {/* Este es el botón que vive en el Header realmente */}
       <div className="xl:hidden flex-1">
-        <Button onClick={() => setIsOpen(true)} style="secondary" fullWidth>
-          <FaBell className="mr-2" /> Recordatorios
+        <Button onClick={() => setIsOpen(true)} style="secondary">
+          <FaBell className="mr-2" /> Reminders
         </Button>
       </div>
 
       {/* Overlay y Aside Móvil */}
       {isOpen && (
-        <div 
-          className="fixed inset-0 bg-oxford/40 backdrop-blur-sm z-40 xl:hidden" 
+        <div
+          className="fixed inset-0 bg-oxford/40 backdrop-blur-sm z-40 xl:hidden"
           onClick={() => setIsOpen(false)}
         />
       )}
-      <aside 
+      <aside
         className={`fixed top-0 right-0 h-full w-xs bg-jasmine p-8 z-50 
     shadow-2xl transition-transform duration-300 xl:hidden
     flex flex-col gap-12 /* <-- El gap considerable que querías */
@@ -31,9 +35,11 @@ export default function MobileRemindersWrapper({ children }: { children: React.R
       >
         {/* Header del Aside */}
         <div className="flex justify-between items-center shrink-0">
-          <h3 className="text-preset-3-bolder text-oxford">Recordatorios</h3>
-          <button 
-            onClick={() => setIsOpen(false)} 
+          <h3 className="text-preset-3-bolder text-oxford">
+                        Reminders
+          </h3>
+          <button
+            onClick={() => setIsOpen(false)}
             className="text-oxford hover:scale-110 transition-transform"
           >
             <FaTimes size={24} />
