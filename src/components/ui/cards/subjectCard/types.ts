@@ -1,8 +1,8 @@
+// src/components/ui/cards/subjectCard/types.ts
 import { SubjectColorEnum, SubjectIconEnum } from "@/services/subjects/enums";
 
 export type NextDeliveryUI = {
-  title: Array<string>;
-  daysLeft: number;
+  tasks: Array<{ title: string; due_date: string }>;
 };
 
 export type SubjectCardProps = {
@@ -11,7 +11,7 @@ export type SubjectCardProps = {
   icon?: SubjectIconEnum;
   color?: SubjectColorEnum;
   progress?: number;
-  nextDelivery?: NextDeliveryUI;
+  nextDelivery?: NextDeliveryUI | null;
   onClick?: () => void;
   loading?: boolean;
 };

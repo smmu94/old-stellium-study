@@ -41,8 +41,7 @@ export type Assignment = {
 };
 
 export type NextDelivery = {
-  title: string[];
-  due_date: string;
+  tasks: Array<{ title: string; due_date: string }>;
 };
 
 export type Subject = {
@@ -53,7 +52,6 @@ export type Subject = {
   icon: SubjectIconEnum;
   color: SubjectColorEnum;
   progress: number;
-  // Este campo es calculado para la UI del Dashboard
   next_delivery: NextDelivery | null;
 };
 

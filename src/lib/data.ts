@@ -4,22 +4,20 @@ import { SubjectListResponse } from "@/lib/definitions";
 
 export async function getSubjects(userId: string): Promise<SubjectListResponse> {
   try {
-    // Esta consulta trae la materia y la entrega más cercana en un solo viaje
     const result = await sql`
       SELECT 
         s.*,
         (
-          SELECT json_build_object(
-            'due_date', a.due_date,
-            'title', array_agg(a.title)
-          )
-          FROM assignments a
-          WHERE a.subject_id = s.id 
-            AND a.due_date >= NOW()
-            AND a.status != 2
-          GROUP BY a.due_date
-          ORDER BY a.due_date ASC
-          LIMIT 1
+          SELECT json_agg(t)
+          FROM (
+            SELECT title, due_date
+            FROM assignments
+            WHERE subject_id = s.id 
+              AND status IN (0, 1)
+              AND due_date::date >= CURRENT_DATE 
+              AND due_date::date <= CURRENT_DATE + INTERVAL '7 days' -- Miramos 7 días al futuro
+            ORDER BY due_date ASC
+          ) t
         ) as next_delivery_json
       FROM subjects s
       WHERE s.user_id = ${userId}
@@ -27,21 +25,15 @@ export async function getSubjects(userId: string): Promise<SubjectListResponse> 
     `;
 
     return result.rows.map(row => ({
-      id: row.id,
-      name: row.name,
-      description: row.description,
-      icon: row.icon,
-      color: row.color,
-      progress: row.progress,
+      ...row,
+      // Ahora enviamos la lista completa de tareas encontradas
       next_delivery: row.next_delivery_json ? {
-        due_date: row.next_delivery_json.due_date,
-        title: row.next_delivery_json.title
+        tasks: row.next_delivery_json 
       } : null
     })) as SubjectListResponse;
-
   } catch (error) {
     console.error("Error al obtener materias:", error);
-    return []; // En el Dashboard, el Suspense manejará esto o SubjectsList mostrará vacío
+    return [];
   }
 }
 

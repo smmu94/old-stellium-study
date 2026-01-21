@@ -1,7 +1,6 @@
 import SubjectCard from "@/components/ui/cards/subjectCard";
 import { authOptions } from "@/lib/auth";
 import { getSubjects } from "@/lib/data";
-import { getNextDelivery } from "@/utils/date";
 import { getServerSession } from "next-auth";
 
 export default async function SubjectsList() {
@@ -28,7 +27,7 @@ export default async function SubjectsList() {
           key={subject.id}
           {...subject}
           title={subject.name}
-          nextDelivery={getNextDelivery(subject.next_delivery)}
+          nextDelivery={subject.next_delivery} 
         />
       ))}
     </div>
