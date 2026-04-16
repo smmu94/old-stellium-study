@@ -16,6 +16,7 @@ export const listMock: SubjectListResponse = Array.from({ length: 5 }).map(() =>
   return {
     id: faker.string.uuid(),
     name: faker.lorem.words(2),
+    description: faker.lorem.sentence(),
     icon: faker.helpers.enumValue(SubjectIconEnum),
     color: faker.helpers.enumValue(SubjectColorEnum),
     next_delivery,

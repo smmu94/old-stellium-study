@@ -5,6 +5,12 @@ import { setInitializing, setUser } from "./authSlice";
 import { handleFirebaseError, logOut, mapFirebaseUserToSafeUser } from "./utils";
 
 export const listenToAuthChanges = (dispatch: AppDispatch) => {
+  if (!auth) {
+    dispatch(setUser(null));
+    dispatch(setInitializing(false));
+    return;
+  }
+
   onAuthStateChanged(auth, (firebaseUser) => {
     if (firebaseUser) {
       const safeUser = mapFirebaseUserToSafeUser(firebaseUser);

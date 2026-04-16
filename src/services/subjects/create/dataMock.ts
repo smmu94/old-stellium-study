@@ -20,6 +20,7 @@ export function buildSubjectCreationResponseMock(
   return {
     id: faker.string.uuid(),
     name: body.name,
+    description: null,
     icon: body.icon,
     color: body.color,
     next_delivery: {
